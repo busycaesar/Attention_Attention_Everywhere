@@ -2,6 +2,13 @@
 
 Companion code for a presentation on the attention mechanism inside transformer language models. The notebooks open up GPT-2, extract the raw **Q**, **K**, **V** vectors from every attention head, and trace — step by step, with real numbers — how the model decides what a pronoun refers to.
 
+## Key Takeaways
+
+- The attention formula is not something to memorise. It falls out of one question about how a word gets its meaning from the words around it, one step at a time, with real arithmetic at every step.
+- A dot product between two embeddings is symmetric, but influence between words is not. That single problem is what forces each token to be split into separate query and key projections.
+- The scores only decide how much. What actually moves between tokens is the value projection, and a token's new embedding is every other token's value added up in proportion to its score.
+- Most attention heads in a trained model do nothing useful, and averaging across them destroys the signal from the few that do. Reading model internals means looking at heads one at a time.
+
 ## The Example
 
 Every notebook works from the same sentence:
